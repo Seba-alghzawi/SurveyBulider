@@ -1,0 +1,19 @@
+
+<mat-card class="example-card" >
+    <mat-icon>check_circle_outline </mat-icon>
+      <mat-card-title> <p>{{recived.SurveyName}}</p> </mat-card-title>
+      <hr>
+      <mat-card-content>
+      <!-- <div *ngFor="let date  of recived.SurveyPeriods   " >
+        <p>{{date.START_DATE}}</p> -->
+        
+        <div  >
+          <div *ngIf="recived?.SurveyPeriods?.length==1">
+            <p>{{recived.SurveyPeriods[0].START_DATE}}</p>
+          </div>
+          <div *ngIf="recived?.SurveyPeriods?.length > 1">
+
+          </div>
+        </div>
+    </mat-card-content>
+  </mat-card>
