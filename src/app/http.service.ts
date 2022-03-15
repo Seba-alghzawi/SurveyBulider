@@ -8,7 +8,7 @@ export class HttpService {
   constructor(private http:HttpClient) { }
   getData()
   {
-    return this.http.get('https://mocki.io/v1/d44b9441-fb81-4745-b76b-0b1982a75bc1')
+    return this.http.get('https://mocki.io/v1/b9f8560e-8d4f-4c00-9c6c-2d1e3f9797f0')
   }
 
   sendData()

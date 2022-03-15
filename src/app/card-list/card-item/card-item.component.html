@@ -1,6 +1,11 @@
 
-<mat-card class="example-card" >
-    <mat-icon>check_circle_outline </mat-icon>
+<mat-card class="example-card" (click)="onclick()" [style.border-color]=" colored ? 'ipx solid green':'none'">
+    <!-- <mat-icon>check_circle_outline </mat-icon> -->
+    
+      <i class="fa-regular fa-circle-check fa-2x seba" cl style="color: green;"></i>
+      <i class="fa-solid fa-circle-check fa-2x shemay" style="color: green;"></i>
+    
+    
       <mat-card-title> <p>{{recived.SurveyName}}</p> </mat-card-title>
       <hr>
       <mat-card-content>
@@ -12,7 +17,13 @@
             <p>{{recived.SurveyPeriods[0].START_DATE}}</p>
           </div>
           <div *ngIf="recived?.SurveyPeriods?.length > 1">
-
+            <mat-form-field>
+              <mat-select>
+                <mat-option *ngFor="let date of recived.SurveyPeriods" [value]="date.START_DATE">
+                  {{date.START_DATE}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
           </div>
         </div>
     </mat-card-content>

@@ -1,1 +1,14 @@
-<app-card-item *ngFor="let data of dataRecived" [recived]="data"></app-card-item>
+<div>
+    <input class="setTnput" type="text" matInput placeholder="search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+    <button class="setbutton" mat-button color="primary" [disabled]="!show">Go to Dashbarod</button>
+    <button class="setbutton" mat-stroked-button color="warn">filter</button>
+    <span>
+        <button mat-raised-button > <i class="fas fa-th-large"></i></button>
+    </span>
+    <span>
+        <button mat-raised-button > <i class="fas fa-list"></i></button>
+    </span> 
+    
+</div>
+<app-card-item *ngFor="let data of dataRecived" [recived]="data" (select)="activateButton()"></app-card-item>

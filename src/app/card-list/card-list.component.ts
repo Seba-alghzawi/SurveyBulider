@@ -11,12 +11,21 @@ export class CardListComponent implements OnInit {
   dataRecived: any;
   selected:Date;
   serveyPeriods:Date;
-constructor(private service_http:HttpService) { }
+  show:boolean=false;
+  constructor(private service_http:HttpService) { }
 
-ngOnInit(){
-  this.service_http.getData().subscribe(data=>{
-  this.dataRecived= (data as any)[0] || [];
-  console.log( this.dataRecived)
-  })
-}
+  ngOnInit(){
+    this.service_http.getData().subscribe(data=>{
+    this.dataRecived= (data as any)[0] || [];
+    console.log( this.dataRecived)
+    })
+  }
+
+  activateButton()
+  {
+    this.show=!this.show;
+    console.log("hello");
+  }
+
+
 }
