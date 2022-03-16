@@ -16,7 +16,7 @@ import { CardItemComponent } from './card-list/card-item/card-item.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatTableModule} from '@angular/material/table';
-
+import {MatRadioModule} from '@angular/material/radio';
 
 
 @NgModule({
@@ -41,7 +41,8 @@ import {MatTableModule} from '@angular/material/table';
     MatTooltipModule,
     ReactiveFormsModule,
     MatTableModule,
-    FormsModule
+    FormsModule,
+    MatRadioModule
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]

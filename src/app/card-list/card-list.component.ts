@@ -12,6 +12,12 @@ export class CardListComponent implements OnInit {
   selected:Date;
   serveyPeriods:Date;
   show:boolean=false;
+  toggle:boolean=true;
+  tableToogle:boolean=true;
+  SourceData: any;
+
+  displayedColumns: string[] = ['SurveyName', 'StartDate', 'EndDate'];
+  
   constructor(private service_http:HttpService) { }
 
   ngOnInit(){
@@ -21,11 +27,22 @@ export class CardListComponent implements OnInit {
     })
   }
 
-  activateButton()
-  {
-    this.show=!this.show;
-    console.log("hello");
-  }
+    activateButton()
+    {
+      this.show=!this.show;
+      console.log("hello");
+    }
+    cardsView()
+    {
+      this.toggle=!this.toggle;
+     
+    }
+    tableView()
+    {
+      this.tableToogle=!this.tableToogle;
+     
+    }
 
-
+      
+    
 }
