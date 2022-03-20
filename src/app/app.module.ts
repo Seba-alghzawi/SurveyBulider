@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule ,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,15 +17,16 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatTableModule} from '@angular/material/table';
 import {MatRadioModule} from '@angular/material/radio';
-
-
+import { DialogViewComponent } from './dialog-view/dialog-view.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatPaginatorModule} from '@angular/material/paginator';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     CardListComponent,
     CardItemComponent,
- 
+    DialogViewComponent
     
   ],
   imports: [
@@ -42,9 +43,13 @@ import {MatRadioModule} from '@angular/material/radio';
     ReactiveFormsModule,
     MatTableModule,
     FormsModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDialogModule,
+    MatPaginatorModule
   ],
   providers: [HttpService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
+
 })
 export class AppModule { }

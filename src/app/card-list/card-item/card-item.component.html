@@ -1,12 +1,12 @@
 
-<mat-card class="example-card" (click)="onclick()" [style.border-color]=" colored ? 'ipx solid green':'none'">
+<mat-card class="example-card" (click)="SelectedSurvey(recived, $event.target)"  [style.background-color]=" colored ? '1px solid green':'none'">
     <!-- <mat-icon>check_circle_outline </mat-icon> -->
     
       <i class="fa-regular fa-circle-check fa-2x seba" cl style="color: green;"></i>
       <i class="fa-solid fa-circle-check fa-2x shemay" style="color: green;"></i>
     
     
-      <mat-card-title> <p>{{recived.SurveyName}}</p> </mat-card-title>
+      <mat-card-title > <p>{{recived.SurveyName}}</p> </mat-card-title>
       <hr>
       <mat-card-content>
       <!-- <div *ngFor="let date  of recived.SurveyPeriods   " >

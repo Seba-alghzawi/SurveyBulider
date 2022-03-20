@@ -1,0 +1,18 @@
+      <h1 mat-dialog-title>Survey</h1>
+      <div mat-dialog-content>
+        <p>data to be updated</p>
+        <mat-form-field appearance="fill">
+            <mat-label>DATA</mat-label>
+            <input matInput [(ngModel)]="data">
+        </mat-form-field>
+      </div>
+     <div>
+        <button mat-raised-button (click)="noClick()">close</button>
+        <button mat-button [mat-dialog-close]="data.Survey" cdkFocusInitial>Ok</button>
+     </div>
+      
+    
+   
+    
+
+  
