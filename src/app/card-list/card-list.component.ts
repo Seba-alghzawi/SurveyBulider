@@ -5,6 +5,7 @@ import { DialogViewComponent } from '../dialog-view/dialog-view.component';
 import { MatPaginator } from '@angular/material/paginator';
 import {MatSort, Sort} from '@angular/material/sort';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
+import { MatTableDataSource } from '@angular/material/table';
 @Component({
   selector: 'app-card-list',
   templateUrl: './card-list.component.html',
@@ -12,42 +13,44 @@ import {LiveAnnouncer} from '@angular/cdk/a11y';
 })
 
 export class CardListComponent implements OnInit {
-
+  selectedUsers: any;
   dataRecived: any;
   dialogObject:any;
   selected: Date;
   serveyPeriods: Date;
   show: boolean = false;
   toggle_grid: string = "grid";
-  SourceData: any;
- 
+   dataSource: any;
+   PublishedArray:any;//filtered published survey
+   ExpiredArray:any;//filtered expired survey
+   ClosedArray:any;//filtered closed survey
+   AllSurveyArray:any;//filtered all survey
   displayedColumns: string[] = ['SurveyName', 'StartDate', 'EndDate'];
 
   constructor(private service_http: HttpService,private dialog: MatDialog ,private _liveAnnouncer: LiveAnnouncer) { }
-  
-  @ViewChild(MatPaginator) paginator !: MatPaginator;
-  @ViewChild(MatSort) sort !: MatSort;
-
   ngOnInit() {
-      this.service_http.getData().subscribe(data=>{
-      this.dataRecived= (data as any)[0] || [];
-      console.log( this.dataRecived)
-      })
-     this.dataRecived.paginator = this.paginator;
-     
-  }
-    
+    this.service_http.getData().subscribe(data=>{
+    this.dataRecived= (data as any)[0] || [];
+    console.log( this.dataRecived)
+    this.dataSource = new MatTableDataSource(this.dataRecived);
+    })
+
+}
   
+
+
+
   ngAfterViewInit() {
-    this.dataRecived.paginator = this.paginator;
-    this.dataRecived.sort = this.sort;
+
   }
   
+
 
   activateButton() {
     this.show = !this.show;
     console.log("hello");
   }
+
   cardsView(selected: string) {
     console.log(this.dataRecived)
     this.toggle_grid = selected;
@@ -60,19 +63,41 @@ export class CardListComponent implements OnInit {
     dialogConfig.data =this.dialogObject.SurveyName
     this.dialog.open(DialogViewComponent, dialogConfig);
 
-   
-
     }
     //grid
+
   changeView(item:string){
     this.toggle_grid=item;
     console.log(this.toggle_grid)
     }
+
     update(updatededVal:any)
     {
       this.dialogObject=updatededVal;
     }
+     
+    onChangetab(sevent:any) :any
+    {
+      if(sevent.tab.textLabel=="Published")
+        {
+          this.PublishedArray=this.dataRecived.filter((x:any) => x.SURVEY_STATUS_EN.includes('Published'))
+          console.log(this.PublishedArray)
+          
+        }else if(sevent.tab.textLabel=="Expired")
+        {
+          this.ExpiredArray=this.dataRecived.filter((x:any) => x.SURVEY_STATUS_EN.includes('Expired'))
+          console.log(this.ExpiredArray)
+        }
+        else if(sevent.tab.textLabel=="Closed")
+        {
+          this.ClosedArray=this.dataRecived.filter((x:any) => x.SURVEY_STATUS_EN.includes('Closed'))
+          console.log(this.ClosedArray)
+        }
+    }
 
+    onSearch(e: any){
+      console.log(e)
+    }
     
-
+    
   }

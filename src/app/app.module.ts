@@ -20,6 +20,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import { DialogViewComponent } from './dialog-view/dialog-view.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatPaginatorModule} from '@angular/material/paginator';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +46,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     FormsModule,
     MatRadioModule,
     MatDialogModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    
   ],
   providers: [HttpService],
   bootstrap: [AppComponent],
