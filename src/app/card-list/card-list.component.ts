@@ -13,6 +13,8 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 
 export class CardListComponent implements OnInit {
+  flag:boolean=false;
+  dialogSurvey:any=null;
   selectedUsers: any;
   dataRecived: any;
   dialogObject:any;
@@ -25,6 +27,8 @@ export class CardListComponent implements OnInit {
    ExpiredArray:any;//filtered expired survey
    ClosedArray:any;//filtered closed survey
    AllSurveyArray:any;//filtered all survey
+   
+   @ViewChild('radioBtn')btn!: any;
   displayedColumns: string[] = ['SurveyName', 'StartDate', 'EndDate'];
 
   constructor(private service_http: HttpService,private dialog: MatDialog ,private _liveAnnouncer: LiveAnnouncer) { }
@@ -44,12 +48,6 @@ export class CardListComponent implements OnInit {
 
   }
   
-
-
-  activateButton() {
-    this.show = !this.show;
-    console.log("hello");
-  }
 
   cardsView(selected: string) {
     console.log(this.dataRecived)
@@ -98,6 +96,18 @@ export class CardListComponent implements OnInit {
     onSearch(e: any){
       console.log(e)
     }
-    
+
+    SelectedSurvey(data:any,item:any){  
+      this.btn=item.checked;
+      if(this.flag==true){
+          this.dialogSurvey=null;
+          this.flag= !this.flag;
+        }  
+        else{
+          this.dialogSurvey=data;
+          this.flag= !this.flag;;
+        }
+        
+    }
     
   }

@@ -20,6 +20,8 @@ import {MatRadioModule} from '@angular/material/radio';
 import { DialogViewComponent } from './dialog-view/dialog-view.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { TableItemComponent } from './card-list/table-item/table-item.component';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     HeaderComponent,
     CardListComponent,
     CardItemComponent,
-    DialogViewComponent
+    DialogViewComponent,
+    TableItemComponent,
+  
     
   ],
   imports: [

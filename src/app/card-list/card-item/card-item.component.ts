@@ -12,7 +12,6 @@ export class CardItemComponent implements OnInit {
  flag:boolean=false;
   dialogSurvey:any=null;
   constructor() { }
-
   ngOnInit(): void {
     if(typeof this.recived.SurveyPeriods == 'string')
      this.recived.SurveyPeriods=JSON.parse(this.recived.SurveyPeriods)

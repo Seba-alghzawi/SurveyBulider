@@ -24,129 +24,18 @@
     </div>
 
     <div *ngIf="toggle_grid!=='grid'" class="mat-elevation-z8">
-      <table mat-table [dataSource]="dataRecived" matSort style="width: 100%;"  >
-      <!-- SurveyName Column -->
-          <ng-container matColumnDef="SurveyName">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by SurveyName"> SurveyName </th>
-            <td mat-cell *matCellDef="let element">
       
-              <div class="radio">
-                <label><input type="radio" id='regular' name="radio">{{element.SurveyName}}</label>
-            </div>
-               </td>
-          </ng-container>
-        
-          <!-- StartDate Column -->
-          <ng-container matColumnDef="StartDate">
-            <th mat-header-cell *matHeaderCellDef > StartDate </th>
-            <td mat-cell *matCellDef="let element" ><div  >
-              <div *ngIf="element?.SurveyPeriods?.length==1">
-                <p>{{element.SurveyPeriods[0].START_DATE | date}}</p>
-              </div>
-              <div *ngIf="element?.SurveyPeriods?.length > 1">
-                <mat-form-field>
-                  <mat-select>
-                    <mat-option *ngFor="let date of element.SurveyPeriods" [value]="date.START_DATE">
-                      {{date.START_DATE | date}}
-                    </mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </div>
-            </div> </td>
-          </ng-container>
-        
-          <!-- EndDate Column -->
-          <ng-container matColumnDef="EndDate">
-            <th mat-header-cell *matHeaderCellDef > EndDate </th>
-            <td mat-cell *matCellDef="let element"> 
-              <div  >
-              <div *ngIf="element?.SurveyPeriods?.length==1">
-                <p>{{element.SurveyPeriods[0].END_DATE | date}}</p>
-              </div>
-              <div *ngIf="element?.SurveyPeriods?.length > 1">
-                <mat-form-field>
-                  <mat-select>
-                    <mat-option *ngFor="let date of element.SurveyPeriods" [value]="date.END_DATE ">
-                      {{date.END_DATE | date}}
-                    </mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </div>
-            </div> 
-          </td>
-          </ng-container>
-        
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          
-        </table>
-
+      <app-table-item [recived_table]="dataRecived"  (select_table)=" update($event)"> </app-table-item>
       </div>
       
       </mat-tab>
-      <mat-tab label="Published" >  Published
+      <mat-tab label="Published"  >  Published
         <div *ngIf="toggle_grid==='grid'" class="card-list-container mt-5"  >
           <app-card-item *ngFor="let data of PublishedArray" [recived]="data"  (select)=" update($event)"></app-card-item>
           
       </div>
       <div *ngIf="toggle_grid!=='grid'" class="mat-elevation-z8">
-        <table mat-table [dataSource]="PublishedArray" matSort style="width: 100%;"  >
-        <!-- SurveyName Column -->
-            <ng-container matColumnDef="SurveyName">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by SurveyName"> SurveyName </th>
-              <td mat-cell *matCellDef="let element">
-        
-                <div class="radio">
-                  <label><input type="radio" id='regular' name="radio">{{element.SurveyName}}</label>
-              </div>
-                 </td>
-            </ng-container>
-          
-            <!-- StartDate Column -->
-            <ng-container matColumnDef="StartDate">
-              <th mat-header-cell *matHeaderCellDef > StartDate </th>
-              <td mat-cell *matCellDef="let element" ><div  >
-                <div *ngIf="element?.SurveyPeriods?.length==1">
-                  <p>{{element.SurveyPeriods[0].START_DATE | date}}</p>
-                </div>
-                <div *ngIf="element?.SurveyPeriods?.length > 1">
-                  <mat-form-field>
-                    <mat-select>
-                      <mat-option *ngFor="let date of element.SurveyPeriods" [value]="date.START_DATE">
-                        {{date.START_DATE | date}}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-              </div> </td>
-            </ng-container>
-          
-            <!-- EndDate Column -->
-            <ng-container matColumnDef="EndDate">
-              <th mat-header-cell *matHeaderCellDef > EndDate </th>
-              <td mat-cell *matCellDef="let element"> 
-                <div  >
-                <div *ngIf="element?.SurveyPeriods?.length==1">
-                  <p>{{element.SurveyPeriods[0].END_DATE | date}}</p>
-                </div>
-                <div *ngIf="element?.SurveyPeriods?.length > 1">
-                  <mat-form-field>
-                    <mat-select>
-                      <mat-option *ngFor="let date of element.SurveyPeriods" [value]="date.END_DATE ">
-                        {{date.END_DATE | date}}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-              </div> 
-            </td>
-            </ng-container>
-          
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            
-          </table>
-  
+        <app-table-item [recived_table]="PublishedArray"  (select_table)=" update($event)"> </app-table-item>
         </div>
       </mat-tab>
       <mat-tab label="Expired"> Expired
@@ -154,62 +43,7 @@
           <app-card-item *ngFor="let data of ExpiredArray" [recived]="data"  (select)=" update($event)"></app-card-item>
       </div>
       <div *ngIf="toggle_grid!=='grid'" class="mat-elevation-z8">
-        <table mat-table [dataSource]="ExpiredArray" matSort style="width: 100%;"  >
-        <!-- SurveyName Column -->
-            <ng-container matColumnDef="SurveyName">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by SurveyName"> SurveyName </th>
-              <td mat-cell *matCellDef="let element">
-        
-                <div class="radio">
-                  <label><input type="radio" id='regular' name="radio">{{element.SurveyName}}</label>
-              </div>
-                 </td>
-            </ng-container>
-          
-            <!-- StartDate Column -->
-            <ng-container matColumnDef="StartDate">
-              <th mat-header-cell *matHeaderCellDef > StartDate </th>
-              <td mat-cell *matCellDef="let element" ><div  >
-                <div *ngIf="element?.SurveyPeriods?.length==1">
-                  <p>{{element.SurveyPeriods[0].START_DATE | date}}</p>
-                </div>
-                <div *ngIf="element?.SurveyPeriods?.length > 1">
-                  <mat-form-field>
-                    <mat-select>
-                      <mat-option *ngFor="let date of element.SurveyPeriods" [value]="date.START_DATE">
-                        {{date.START_DATE | date}}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-              </div> </td>
-            </ng-container>
-          
-            <!-- EndDate Column -->
-            <ng-container matColumnDef="EndDate">
-              <th mat-header-cell *matHeaderCellDef > EndDate </th>
-              <td mat-cell *matCellDef="let element"> 
-                <div  >
-                <div *ngIf="element?.SurveyPeriods?.length==1">
-                  <p>{{element.SurveyPeriods[0].END_DATE | date}}</p>
-                </div>
-                <div *ngIf="element?.SurveyPeriods?.length > 1">
-                  <mat-form-field>
-                    <mat-select>
-                      <mat-option *ngFor="let date of element.SurveyPeriods" [value]="date.END_DATE ">
-                        {{date.END_DATE | date}}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-              </div> 
-            </td>
-            </ng-container>
-          
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            
-          </table>
+        <app-table-item [recived_table]="ExpiredArray"  (select_table)=" update($event)"> </app-table-item>
   
         </div>
       </mat-tab>
@@ -220,63 +54,7 @@
       </div>
   
       <div *ngIf="toggle_grid!=='grid'" class="mat-elevation-z8">
-        <table mat-table [dataSource]="ClosedArray" matSort style="width: 100%;"  >
-        <!-- SurveyName Column -->
-            <ng-container matColumnDef="SurveyName">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by SurveyName"> SurveyName </th>
-              <td mat-cell *matCellDef="let element">
-        
-                <div class="radio">
-                  <label><input type="radio" id='regular' name="radio">{{element.SurveyName}}</label>
-              </div>
-                 </td>
-            </ng-container>
-          
-            <!-- StartDate Column -->
-            <ng-container matColumnDef="StartDate">
-              <th mat-header-cell *matHeaderCellDef > StartDate </th>
-              <td mat-cell *matCellDef="let element" ><div  >
-                <div *ngIf="element?.SurveyPeriods?.length==1">
-                  <p>{{element.SurveyPeriods[0].START_DATE | date}}</p>
-                </div>
-                <div *ngIf="element?.SurveyPeriods?.length > 1">
-                  <mat-form-field>
-                    <mat-select>
-                      <mat-option *ngFor="let date of element.SurveyPeriods" [value]="date.START_DATE">
-                        {{date.START_DATE | date}}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-              </div> </td>
-            </ng-container>
-          
-            <!-- EndDate Column -->
-            <ng-container matColumnDef="EndDate">
-              <th mat-header-cell *matHeaderCellDef > EndDate </th>
-              <td mat-cell *matCellDef="let element"> 
-                <div  >
-                <div *ngIf="element?.SurveyPeriods?.length==1">
-                  <p>{{element.SurveyPeriods[0].END_DATE | date}}</p>
-                </div>
-                <div *ngIf="element?.SurveyPeriods?.length > 1">
-                  <mat-form-field>
-                    <mat-select>
-                      <mat-option *ngFor="let date of element.SurveyPeriods" [value]="date.END_DATE ">
-                        {{date.END_DATE | date}}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-              </div> 
-            </td>
-            </ng-container>
-          
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            
-          </table>
-  
+        <app-table-item [recived_table]="ClosedArray"  (select_table)=" update($event)"> </app-table-item>
         </div>
       </mat-tab>
       
