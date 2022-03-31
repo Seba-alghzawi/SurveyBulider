@@ -21,7 +21,7 @@ import { DialogViewComponent } from './dialog-view/dialog-view.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { TableItemComponent } from './card-list/table-item/table-item.component';
-
+import{ServeyService}from'./servey.service';
 
 @NgModule({
   declarations: [
@@ -53,7 +53,7 @@ import { TableItemComponent } from './card-list/table-item/table-item.component'
     MatPaginatorModule,
     
   ],
-  providers: [HttpService],
+  providers: [HttpService , ServeyService],
   bootstrap: [AppComponent],
 
 

@@ -6,6 +6,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import {MatSort, Sort} from '@angular/material/sort';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
 import { MatTableDataSource } from '@angular/material/table';
+import{ServeyService}from'../servey.service';
 @Component({
   selector: 'app-card-list',
   templateUrl: './card-list.component.html',
@@ -27,11 +28,13 @@ export class CardListComponent implements OnInit {
    ExpiredArray:any;//filtered expired survey
    ClosedArray:any;//filtered closed survey
    AllSurveyArray:any;//filtered all survey
-   
+   search_value:any;
+   searchResult:any;
+   done_flag:boolean=false;
    @ViewChild('radioBtn')btn!: any;
   displayedColumns: string[] = ['SurveyName', 'StartDate', 'EndDate'];
 
-  constructor(private service_http: HttpService,private dialog: MatDialog ,private _liveAnnouncer: LiveAnnouncer) { }
+  constructor(private service_http: HttpService,private dialog: MatDialog ,public survey_service :ServeyService) { }
   ngOnInit() {
     this.service_http.getData().subscribe(data=>{
     this.dataRecived= (data as any)[0] || [];
@@ -60,6 +63,10 @@ export class CardListComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.data =this.dialogObject.SurveyName
     this.dialog.open(DialogViewComponent, dialogConfig);
+    // dialogConfig.afterClosed().subscribe((result:any) => {
+    //   console.log('The dialog was closed');
+    //   dialogConfig.data = result;
+    // });
 
     }
     //grid
@@ -71,7 +78,26 @@ export class CardListComponent implements OnInit {
 
     update(updatededVal:any)
     {
-      this.dialogObject=updatededVal;
+     
+      if(updatededVal.TEMPLATE_ID==this.survey_service.cardselected_id)
+      {
+        this.done_flag=!this.done_flag;
+        this.dialogObject=updatededVal;
+      }
+      else{
+        if(updatededVal.TEMPLATE_ID!=this.survey_service.cardselected_id)
+        {
+          this.done_flag=!this.done_flag;
+          this.survey_service.cardselected_id=updatededVal.TEMPLATE_ID;
+          this.dialogObject=updatededVal;
+        } 
+        else
+        this.dialogObject=null;
+      }
+
+      
+      
+      // console.log(this.dialogObject);
     }
      
     onChangetab(sevent:any) :any
@@ -93,21 +119,26 @@ export class CardListComponent implements OnInit {
         }
     }
 
-    onSearch(e: any){
-      console.log(e)
+    onSearch(event: Event){
+      const filterValue = (event.target as HTMLInputElement).value;
+      // this.searchResult = this.dataRecived.filter((x:any) => x.SurveyName.includes(this.search_value))
+      this.dataSource.filter= filterValue.trim().toLowerCase();
+      console.log(this.dataSource)
     }
 
     SelectedSurvey(data:any,item:any){  
-      this.btn=item.checked;
-      if(this.flag==true){
-          this.dialogSurvey=null;
-          this.flag= !this.flag;
-        }  
-        else{
-          this.dialogSurvey=data;
-          this.flag= !this.flag;;
-        }
-        
+      // this.btn=item.checked;
+      // if(this.flag==true){
+      //     this.dialogSurvey=null;
+      //     this.flag= !this.flag;
+      //   }  
+      //   else{
+      //     this.dialogSurvey=data;
+      //     this.flag= !this.flag;;
+      //   }
     }
+
+
+
     
   }

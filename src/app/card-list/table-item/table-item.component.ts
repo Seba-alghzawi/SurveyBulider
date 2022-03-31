@@ -19,26 +19,16 @@ export class TableItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    if(typeof this.recived_table.SurveyPeriods == 'string')
+    if(typeof this.recived_table?.SurveyPeriods == 'string')
     this.recived_table.SurveyPeriods=JSON.parse(this.recived_table.SurveyPeriods)
     
   }
 
 
 
-  SelectedSurvey(data:any,item:any){  
-    // item.checked=!item.checked; 
-    if(this.flag==true){
-      this.dialogSurvey=null;
-      this.flag= !this.flag;
-    }  
-    else{
-      this.dialogSurvey=data;
-      this.flag= !this.flag;;
-    }
-    this.colored=!this.colored;
-       console.log(this.dialogSurvey)
-      this.select_table.emit(this.dialogSurvey);
+  SelectedSurvey(){  
+    
+      this.select_table.emit(this.recived_table.TEMPLATE_ID);
      
 }
 

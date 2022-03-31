@@ -1,8 +1,8 @@
 
 <div>
-  <input (keydown)="onSearch($event)" class="setTnput" type="text" matInput placeholder="search" style="display: inline-block;">
+  <input  (keyup)="onSearch($event)" class="setTnput" type="text" matInput placeholder="search" style="display: inline-block;" #input>
       <i class="fa-solid fa-magnifying-glass"></i>
-  <button button mat-raised-button style="display: inline-block;" (click)="openDialog()" color="primary"[disabled]="dialogObject==null" >Go to Dashbarod</button>
+  <button button mat-raised-button style="display: inline-block;" (click)="openDialog()" color="primary"[disabled]="done_flag==false" >Go to Dashbarod</button>
   <button class="setbutton" style="display: inline-block;" mat-stroked-button color="warn">filter</button>
 
   <span>
@@ -19,7 +19,7 @@
   <mat-tab-group (selectedTabChange)="onChangetab($event);" >
     <mat-tab label="All Survey"> All Survey
       <div *ngIf="toggle_grid==='grid'" class="card-list-container mt-5"  >
-        <app-card-item *ngFor="let data of dataRecived" [recived]="data"  (select)=" update($event)"></app-card-item>
+        <app-card-item *ngFor="let data of dataRecived" [recived]="data"  (select)=" update($event)"   ></app-card-item>
         
     </div>
 
@@ -31,8 +31,7 @@
       </mat-tab>
       <mat-tab label="Published"  >  Published
         <div *ngIf="toggle_grid==='grid'" class="card-list-container mt-5"  >
-          <app-card-item *ngFor="let data of PublishedArray" [recived]="data"  (select)=" update($event)"></app-card-item>
-          
+          <app-card-item *ngFor="let data of PublishedArray" [recived]="data"  (select)=" update($event) "></app-card-item>
       </div>
       <div *ngIf="toggle_grid!=='grid'" class="mat-elevation-z8">
         <app-table-item [recived_table]="PublishedArray"  (select_table)=" update($event)"> </app-table-item>
