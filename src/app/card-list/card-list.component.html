@@ -2,7 +2,8 @@
 <div>
   <input  (keyup)="onSearch($event)" class="setTnput" type="text" matInput placeholder="search" style="display: inline-block;" #input>
       <i class="fa-solid fa-magnifying-glass"></i>
-  <button button mat-raised-button style="display: inline-block;" (click)="openDialog()" color="primary"[disabled]="done_flag==false" >Go to Dashbarod</button>
+  <button button mat-raised-button style="display: inline-block;" (click)="openDialog()" color="primary"[disabled]="survey_service.cardselected_id==null" >Go to Dashbarod</button>
+  <h1> --- {{survey_service.cardselected_id}}</h1>
   <button class="setbutton" style="display: inline-block;" mat-stroked-button color="warn">filter</button>
 
   <span>

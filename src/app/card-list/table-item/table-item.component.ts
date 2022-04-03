@@ -27,7 +27,6 @@ export class TableItemComponent implements OnInit {
 
 
   SelectedSurvey(){  
-    
       this.select_table.emit(this.recived_table.TEMPLATE_ID);
      
 }

@@ -79,21 +79,16 @@ export class CardListComponent implements OnInit {
     update(updatededVal:any)
     {
      
-      if(updatededVal.TEMPLATE_ID==this.survey_service.cardselected_id)
+      if(updatededVal==this.survey_service.cardselected_id)
       {
-        this.done_flag=!this.done_flag;
+        this.done_flag=false
+        this.survey_service.cardselected_id = null
         this.dialogObject=updatededVal;
       }
       else{
-        if(updatededVal.TEMPLATE_ID!=this.survey_service.cardselected_id)
-        {
-          this.done_flag=!this.done_flag;
-          this.survey_service.cardselected_id=updatededVal.TEMPLATE_ID;
-          this.dialogObject=updatededVal;
-        } 
-        else
-        this.dialogObject=null;
+        this.survey_service.cardselected_id = updatededVal
       }
+      
 
       
       
@@ -126,6 +121,7 @@ export class CardListComponent implements OnInit {
       console.log(this.dataSource)
     }
 
+    
     SelectedSurvey(data:any,item:any){  
       // this.btn=item.checked;
       // if(this.flag==true){

@@ -24,8 +24,5 @@ dialogSurvey:any;
      
       SelectedSurvey(){  
           this.select.emit(this.recived.TEMPLATE_ID);
-          this.survey_service.SelectedCard(this.recived.TEMPLATE_ID); 
-          
-          
     }
 }
