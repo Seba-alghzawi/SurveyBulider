@@ -9,8 +9,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class DialogViewComponent {
   constructor(
     public dialogRef: MatDialogRef<DialogViewComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-  ) {}
+    @Inject(MAT_DIALOG_DATA) public data:any) {}
 
   noClick(): void {
     this.dialogRef.close();

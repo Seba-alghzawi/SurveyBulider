@@ -23,6 +23,7 @@ dialogSurvey:any;
   }
      
       SelectedSurvey(){  
-          this.select.emit(this.recived.TEMPLATE_ID);
+          this.select.emit(this.recived);
+
     }
 }

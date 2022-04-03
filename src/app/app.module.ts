@@ -22,6 +22,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { TableItemComponent } from './card-list/table-item/table-item.component';
 import{ServeyService}from'./servey.service';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,7 @@ import{ServeyService}from'./servey.service';
     MatRadioModule,
     MatDialogModule,
     MatPaginatorModule,
-    
+    MatDatepickerModule
   ],
   providers: [HttpService , ServeyService],
   bootstrap: [AppComponent],

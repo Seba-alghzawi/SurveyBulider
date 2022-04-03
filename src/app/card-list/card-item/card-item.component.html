@@ -1,13 +1,5 @@
 
-<mat-card  class="example-card" (click)="SelectedSurvey()" [ngClass]="{'option1':survey_service.cardselected_id==recived.TEMPLATE_ID}" >
-    <!-- <mat-icon>check_circle_outline </mat-icon> -->
-    <!-- (mouseenter)="icon_test=true" (mouseleave)="icon_test=false" -->
-    <!-- *ngIf="icon_test==false && icon_onclick==true " -->
-    <!-- *ngIf="icon_test==true || icon_onclick==false "  -->
-    <!-- "icon_onclick=!icon_onclick"  --> 
-
-    <h1>{{survey_service.cardselected_id==recived.TEMPLATE_ID}}</h1>
-    
+<mat-card  class="example-card" (click)="SelectedSurvey()" [ngClass]="{'option1':survey_service.cardselected_id==recived.TEMPLATE_ID}" >  
       <div>
       <i *ngIf="survey_service.cardselected_id!=recived.TEMPLATE_ID"class="fa-regular fa-circle-check fa-2x " cl style="color: green;" ></i>
       <i  *ngIf="survey_service.cardselected_id==recived.TEMPLATE_ID" class="fa-solid fa-circle-check fa-2x " style="color: green;"></i>
@@ -16,8 +8,7 @@
       <mat-card-title > <p>{{recived.SurveyName}}</p> </mat-card-title>
       <hr>
       <mat-card-content>
-      <!-- <div *ngFor="let date  of recived.SurveyPeriods   " >bm
-        <p>{{date.START_DATE}}</p> -->
+      
         
         <div  >
           <div *ngIf="recived?.SurveyPeriods?.length==1">
