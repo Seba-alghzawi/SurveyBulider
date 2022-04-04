@@ -1,0 +1,16 @@
+
+   
+<span >
+    <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6Bxe2zD6NESfM2nc_GjF2WECqbhv86tPZnA&usqp=CAU" width="70 px">
+</span>
+    <div  class="rows">
+        <div class="circles" *ngFor='let item of names; let i = index' (click)="changePass()">
+          {{ i +1  <= 1  ? getInitials(item , i) : '+'  +  (names.length - i) }}
+        </div>
+        <span><p >{{names}}</p></span>
+        </div>
+
+
+   
+    
+    

@@ -14,6 +14,7 @@ import{ServeyService}from'../servey.service';
 })
 
 export class CardListComponent implements OnInit {
+  term:string="";
   flag:boolean=false;
   dialogSurvey:any=null;
   dataRecived: any;

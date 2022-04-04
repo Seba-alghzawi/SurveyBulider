@@ -23,7 +23,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { TableItemComponent } from './card-list/table-item/table-item.component';
 import{ServeyService}from'./servey.service';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +52,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     MatRadioModule,
     MatDialogModule,
     MatPaginatorModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    Ng2SearchPipeModule
   ],
   providers: [HttpService , ServeyService],
   bootstrap: [AppComponent],

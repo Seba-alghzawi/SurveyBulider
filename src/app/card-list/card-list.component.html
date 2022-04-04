@@ -1,6 +1,6 @@
 
 <div>
-  <input  (keyup)="onSearch($event)" class="setTnput" type="text" matInput placeholder="search" style="display: inline-block;" #input>
+  <input  (keyup)="onSearch($event)" class="setTnput" type="text" matInput placeholder="search" style="display: inline-block;" #input  [(ngModel)]="term">
       <i class="fa-solid fa-magnifying-glass"></i>
   <button button mat-raised-button style="display: inline-block;" (click)="openDialog()" color="primary"[disabled]="survey_service.cardselected_id==null" >Go to Dashbarod</button>
 
@@ -19,9 +19,9 @@
 
 <div class="container" >
   <mat-tab-group (selectedTabChange)="onChangetab($event);" >
-    <mat-tab label="All Survey"> All Survey
+    <mat-tab label="All Survey"> All Survey  
       <div *ngIf="toggle_grid==='grid'" class="card-list-container mt-5"  >
-        <app-card-item *ngFor="let data of dataRecived" [recived]="data"  (select)=" update($event)"   ></app-card-item>
+        <app-card-item *ngFor="let data of dataRecived |filter:term" [recived]="data"  (select)=" update($event)"   ></app-card-item>
         
     </div>
 
@@ -33,7 +33,7 @@
       </mat-tab>
       <mat-tab label="Published"  >  Published
         <div *ngIf="toggle_grid==='grid'" class="card-list-container mt-5"  >
-          <app-card-item *ngFor="let data of filteredArray" [recived]="data"  (select)=" update($event) "></app-card-item>
+          <app-card-item *ngFor="let data of filteredArray |filter:term" [recived]="data"  (select)=" update($event) "></app-card-item>
       </div>
       <div *ngIf="toggle_grid!=='grid'" class="mat-elevation-z8">
         <app-table-item [recived_table]="filteredArray"  (select_table)=" update($event)"> </app-table-item>
@@ -41,7 +41,7 @@
       </mat-tab>
       <mat-tab label="Expired"> Expired
         <div *ngIf="toggle_grid==='grid'" class="card-list-container mt-5"  >
-          <app-card-item *ngFor="let data of filteredArray" [recived]="data"  (select)=" update($event)"></app-card-item>
+          <app-card-item *ngFor="let data of filteredArray |filter:term" [recived]="data"  (select)=" update($event)"></app-card-item>
       </div>
       <div *ngIf="toggle_grid!=='grid'" class="mat-elevation-z8">
         <app-table-item [recived_table]="filteredArray"  (select_table)=" update($event)"> </app-table-item>
@@ -50,7 +50,7 @@
       </mat-tab>
       <mat-tab label="Closed" > Closed 
         <div *ngIf="toggle_grid==='grid'" class="card-list-container mt-5"  >
-          <app-card-item *ngFor="let data of filteredArray" [recived]="data"  (select)=" update($event)"></app-card-item>
+          <app-card-item *ngFor="let data of filteredArray |filter:term" [recived]="data"  (select)=" update($event)"></app-card-item>
           
       </div>
   
