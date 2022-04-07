@@ -38,7 +38,7 @@
             <div *ngIf="element?.SurveyPeriods?.length==1">
               <p>{{element.SurveyPeriods[0].END_DATE | date}}</p>
             </div>
-            <div *ngIf="element?.SurveyPeriods?.length > 1">
+            <div *ngIf="element?.SurveyPeriods?.length > 1 ">
               <mat-form-field>
                 <mat-select>
                   <mat-option *ngFor="let date of element.SurveyPeriods" [value]="date.END_DATE ">

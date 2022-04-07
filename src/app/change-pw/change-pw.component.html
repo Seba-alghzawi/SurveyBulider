@@ -1,0 +1,48 @@
+<div class="container">
+    <form #PasswardValidation="ngForm" >
+
+        <div>
+            <label>change pw</label>
+            <input type="password" placeholder="psw"
+                name="passward" [pattern]="passwardPattern"
+                [(ngModel)]="registerArray.passward"  #Passward="ngModel"
+                minlength="8" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+            required (focus)="onfocus()" (keyup)="test(registerArray.passward)"
+            >
+            <span class="error-msg" *ngIf="(Passward.touched || PasswardValidation.submitted)&& Passward.errors?.['required']">passward is required</span>
+            <!-- <span class="error-msg" *ngIf="(Passward.touched || PasswardValidation.submitted)&& Passward.errors?.['pattern']">  passward must be at least 8 bit and have uppercase and lowercase char and at least 1 special char </span> -->
+         </div>
+
+         <div>
+            <label>confirm pw</label>
+            <input type="password" placeholder="confirm psw"
+                name="password" [pattern]="passwardPattern"
+                [(ngModel)]="registerArray.ConfirmPassward"  #ConfirmPassward="ngModel"
+                minlength="8" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+            required
+            >
+            <span class="invalid" class="error-msg" *ngIf="(ConfirmPassward.touched || PasswardValidation.submitted)&& ConfirmPassward.errors?.['required']" >ConfirmPassward is required</span>
+            <span class="error-msg" *ngIf="(Passward.touched || PasswardValidation.submitted)&& registerArray.passward!=registerArray.ConfirmPassward"> passward and  ConfirmPassward must be the same</span>
+         </div>
+
+         <div *ngIf="displayFlag==true" id="message" [ngStyle]="{'display':'block' }">
+          <h3>Password must contain the following:</h3>
+          <p [ngClass]="{'valid':lowercaseletter==true}" [ngClass]="{'invalid':lowercaseletter==false}" >A <b>lowercase</b> letter</p>
+          <p [ngClass]="{'valid':uppercaseletter==true}" [ngClass]="{'invalid':uppercaseletter==false}">A <b>capital (uppercase)</b> letter</p>
+          <p [ngClass]="{'valid':num==true}" [ngClass]="{'invalid':num==false}">A <b>number</b></p>
+          <p [ngClass]="{'valid':leng==true}" [ngClass]="{'invalid':leng==false}">Minimum <b>8 characters</b></p>
+        </div>
+
+         <button class="btn btn-primary" type="submit">submit</button>
+         
+            <br>
+            <br>
+
+          <div>
+            <button ><a routerLink="/" routerLinkActive="active">back</a></button>
+          </div>
+       
+
+        </form>
+    
+</div>

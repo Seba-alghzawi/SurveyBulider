@@ -24,6 +24,10 @@ import { TableItemComponent } from './card-list/table-item/table-item.component'
 import{ServeyService}from'./servey.service';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ChangePWComponent } from './change-pw/change-pw.component';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +36,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     CardItemComponent,
     DialogViewComponent,
     TableItemComponent,
+    ChangePWComponent,
   
     
   ],
@@ -53,7 +58,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     MatDialogModule,
     MatPaginatorModule,
     MatDatepickerModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
   ],
   providers: [HttpService , ServeyService],
   bootstrap: [AppComponent],

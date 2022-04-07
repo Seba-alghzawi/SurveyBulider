@@ -75,7 +75,6 @@ export class CardListComponent implements OnInit {
         this.survey_service.cardselected_id = updatededVal.TEMPLATE_ID
       }
       this.dialogObject=updatededVal;
-
       console.log(this.dialogObject);
     }
      
