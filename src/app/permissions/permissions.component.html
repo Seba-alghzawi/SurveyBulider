@@ -1,0 +1,28 @@
+
+
+
+<div class="container">
+    <h1>permissions</h1>
+<form [formGroup]="reactiveform">
+    <div>
+        <label>UserName<input  type=" text" formControlName="userName" value="userName" /></label>
+      </div>
+      <div *ngFor="let item of RecivedPermission">
+        <hr>
+          <div><p>{{item.pageDescEn}}:</p></div>
+      <span >
+        <label>read_write<input type="radio" formControlName="radio" value="read_write" /></label>
+        <label>readOnly<input type="radio" formControlName="radio" value="readOnly" /></label>
+        <label >none<input  type="radio" formControlName="radio" value="none" />
+        <div *ngFor="let xx of item.pageFunctions ">
+           <label>{{xx.pageFuncDescEn}} <input type="checkbox" formControlName="checkbox" value="checkbox"></label> 
+           
+        </div>
+    </label>
+      </span>
+    </div>
+      
+</form>
+</div>
+
+<li><a routerLink="/">back</a></li>

@@ -34,15 +34,45 @@
         </div>
 
          <button class="btn btn-primary" type="submit">submit</button>
-         
+
             <br>
             <br>
 
           <div>
             <button ><a routerLink="/" routerLinkActive="active">back</a></button>
           </div>
-       
-
         </form>
-    
 </div>
+
+<br>
+<br>
+
+
+<div class="container">
+<form [formGroup]="reactiveForm">
+    <div>
+    <label>contact preferance </label> 
+    <div>
+      <label>email<input type="radio"  value="email" formControlName="radio" (click)="radiocheacked()" /></label>
+    </div>
+    <div>
+      <label>phone<input type="radio"  value="phone" formControlName="radio" (click)="radiocheacked()" /></label> 
+    </div>
+    </div>
+    <div>
+      <label>email<input type=" email" formControlName="email" value="email" /></label>
+    </div>
+    <div>
+      <label>phone<input type=" text" formControlName="phone" value="phone" /></label>
+    </div>
+    <span *ngIf="valueSelected" class="invalid">{{valueSelected}} is required</span>
+      <div>
+        <br>
+        <button type="submit" (click)="submited()" >submit</button>
+      </div>
+</form>
+</div>
+
+
+
+

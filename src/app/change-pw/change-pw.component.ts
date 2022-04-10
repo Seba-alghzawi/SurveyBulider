@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FormBuilder ,FormGroup } from '@angular/forms'; 
+import { EmailValidator, FormBuilder ,FormGroup, RequiredValidator } from '@angular/forms'; 
+import { Validators } from '@angular/forms';
 @Component({
   selector: 'app-change-pw',
   templateUrl: './change-pw.component.html',
@@ -12,20 +13,54 @@ lowercaseletter:boolean=false;
 uppercaseletter :boolean=false;
 num:boolean=false;
 leng:boolean=false;
+emailFlag:boolean=false;
+phoneFlag:boolean=false;
+valueSelected:any;
 
 reactiveForm!: FormGroup;
 passwardPattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}";
 registerArray:any={};
 
-  constructor(private route:ActivatedRoute ,private fb:FormBuilder) { }
+  constructor(private route:ActivatedRoute ,private fb:FormBuilder) {
+    
+   
+   }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params=>{
-      console.log(params)
+     this.reactiveForm=this.fb.group({
+       radio:[''],
+       email:[''],
+       phone:['']
+     })
+     this.reactiveForm.get('radio')?.valueChanges.subscribe(value=>{
+      this.valueSelected = value;
+     })
+
     })
   }
    
-  
+  radiocheacked()
+  {
+    if(this.valueSelected  =='email')
+    {
+      this.reactiveForm.get('email')?.setValidators(Validators.required);
+      this.reactiveForm.get('phone')?.clearValidators();
+    }
+    if(this.valueSelected  =='phone')
+    {
+      this.reactiveForm.get('email')?.clearValidators();
+      this.reactiveForm.get('phone')?.setValidators(Validators.required);
+    }
+
+  }
+
+
+  submited()
+  {
+    console.log(this.reactiveForm.value);
+  }
+
   onfocus () {
     this.displayFlag=!this.displayFlag;
   }
@@ -73,4 +108,9 @@ registerArray:any={};
   }
 
 
+  
+ 
+
 }
+
+

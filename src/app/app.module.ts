@@ -25,6 +25,7 @@ import{ServeyService}from'./servey.service';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ChangePWComponent } from './change-pw/change-pw.component';
+import { PermissionsComponent } from './permissions/permissions.component';
 
 
 
@@ -37,6 +38,7 @@ import { ChangePWComponent } from './change-pw/change-pw.component';
     DialogViewComponent,
     TableItemComponent,
     ChangePWComponent,
+    PermissionsComponent,
   
     
   ],
