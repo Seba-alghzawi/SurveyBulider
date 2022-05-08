@@ -5,12 +5,13 @@ import { Injectable  } from '@angular/core';
 })
 export class ServeyService {
 cardselected_id=null;
+fontFamily='';
   constructor() { }
 
-  SelectedCard(data:any)
-  {
-    this.cardselected_id=data;
-  }
+  // SelectedCard(data:any)
+  // {
+  //   this.cardselected_id=data;
+  // }
 
 
 }

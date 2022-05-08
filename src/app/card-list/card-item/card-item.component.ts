@@ -15,6 +15,7 @@ export class CardItemComponent implements OnInit {
  flag=false;
 icon_onclick:boolean=true;
 dialogSurvey:any;
+themflag=performance.navigation.type;
   constructor(public survey_service :ServeyService) { }
 
   ngOnInit(): void {
@@ -24,6 +25,6 @@ dialogSurvey:any;
      
       SelectedSurvey(){  
           this.select.emit(this.recived);
-
+          
     }
 }

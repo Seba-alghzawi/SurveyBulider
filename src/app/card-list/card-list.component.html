@@ -1,13 +1,13 @@
-
-<div>
+<div [ngStyle]="{'background-color':((themeSelectedByUser=='dark' && themflag==1 )||(themeSelectedByUser=='dark' && themflag==0 )) ? 'gray' : 'white'}" >
+<div >
   
   <input id="search" (keyup)="onSearch($event)" class="setTnput" type="text" matInput placeholder="search" style="display: inline-block; color: black ;"  #input  [(ngModel)]="term">
       <i class="fa-solid fa-magnifying-glass"></i>
   <button button mat-raised-button style="display: inline-block;" (click)="openDialog()" color="primary" [disabled]="survey_service.cardselected_id==null"  >Go to Dashbarod</button>
 
   
-  <button class="setbutton" style="display: inline-block;" mat-stroked-button color="warn" >filter</button>
-
+  <button class="setbutton" style="display: inline-block;" mat-stroked-button color="warn" (click)=" changeTheme('normal')">normal  theme</button>
+  <button class="setbutton" style="display: inline-block;" mat-stroked-button color="warn" (click)=" changeTheme('dark')">dark theme</button>
   <span>
       <button mat-raised-button  style="display: inline-block;"(click)="cardsView('grid')"> <i class="fas fa-th-large"></i></button>
       <button mat-raised-button style="display: inline-block;" (click)="cardsView('table')"> <i class="fas fa-list"></i> </button>
@@ -26,6 +26,11 @@
       <mat-error *ngIf="range.controls['start'].hasError('matStartDateInvalid')">Invalid start date</mat-error>
       <mat-error *ngIf="range.controls['end'].hasError('matEndDateInvalid')">Invalid end date</mat-error>
     </mat-form-field>
+    </span>
+    <span>
+      <button class="setbutton" style="display: inline-block;" mat-stroked-button color="warn" (click)=" changeFont('normal')">normal font</button>
+      <button class="setbutton" style="display: inline-block;" mat-stroked-button color="warn" (click)=" changeFont('larger')">larger font</button>
+     
     </span>
 </div>
 
@@ -79,7 +84,7 @@
 
 
 
-
+  </div>
 
 
 

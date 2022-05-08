@@ -33,6 +33,8 @@ export class CardListComponent implements OnInit {
    endD:any;
    newdata2:any[]=[];
    newdata:any[]=[];
+   themeSelectedByUser :string | null;
+   themflag=performance.navigation.type;
    @ViewChild('radioBtn')btn!: any;
   displayedColumns: string[] = ['SurveyName', 'StartDate', 'EndDate'];
 
@@ -43,7 +45,17 @@ export class CardListComponent implements OnInit {
     console.log( this.dataRecived)
     this.dataSource = new MatTableDataSource(this.dataRecived);
     })
-
+    const value=localStorage.getItem('modeKey')
+    const fontvalue=localStorage.getItem('fontKey')
+    if(value)
+    {
+      this.themeSelectedByUser=value;
+    }
+    if(fontvalue)
+    {
+      this.survey_service.fontFamily=fontvalue;
+    }
+    
 }
   
 range = new FormGroup({
@@ -161,10 +173,30 @@ range = new FormGroup({
       // console.log(typeof(this.endD))
     }
 
-
+      changeTheme(themeSelected:string)
+      {
+        const value=themeSelected;
+         this.themeSelectedByUser=themeSelected;
+        localStorage.setItem('modeKey',value)
+        if(performance.navigation.type==1)
+        {
+         
+            //  this.themflag=true;
+          
+          
+          console.log("done")
+        }
+      }
   
  
-  
+      changeFont(font:string)
+      {
+        const value=font;
+        this.survey_service.fontFamily=font;
+        localStorage.setItem('fontKey',value)
+        console.log(this.survey_service.fontFamily)
+        // console.log(font)
+      }
 
     
   }
