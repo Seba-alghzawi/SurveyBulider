@@ -12,13 +12,13 @@
         
         <div  >
           <div *ngIf="recived?.SurveyPeriods?.length==1">
-            <p>{{recived.SurveyPeriods[0].START_DATE}}</p>
+            <p>{{recived.SurveyPeriods[0].START_DATE| date}} - {{recived.SurveyPeriods[0].END_DATE | date}}</p>
           </div>
           <div *ngIf="recived?.SurveyPeriods?.length > 1">
             <mat-form-field>
               <mat-select>
-                <mat-option *ngFor="let date of recived.SurveyPeriods" [value]="date.START_DATE | date">
-                  {{date.START_DATE | date}}
+                <mat-option *ngFor="let date of recived.SurveyPeriods" [value]="date">
+                  {{date.START_DATE | date}} - {{date.END_DATE | date}}
                 </mat-option>
               </mat-select>
             </mat-form-field>

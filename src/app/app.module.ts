@@ -26,6 +26,10 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ChangePWComponent } from './change-pw/change-pw.component';
 import { PermissionsComponent } from './permissions/permissions.component';
+import { DaterangePickerComponent } from './daterange-picker/daterange-picker.component';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatInputModule} from '@angular/material/input';
+import { FilterPipe } from './filter.pipe';
 
 
 
@@ -39,6 +43,8 @@ import { PermissionsComponent } from './permissions/permissions.component';
     TableItemComponent,
     ChangePWComponent,
     PermissionsComponent,
+    DaterangePickerComponent,
+    FilterPipe,
   
     
   ],
@@ -61,6 +67,8 @@ import { PermissionsComponent } from './permissions/permissions.component';
     MatPaginatorModule,
     MatDatepickerModule,
     Ng2SearchPipeModule,
+    MatNativeDateModule,
+    MatInputModule
   ],
   providers: [HttpService , ServeyService],
   bootstrap: [AppComponent],

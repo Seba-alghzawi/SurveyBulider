@@ -1,28 +1,82 @@
-
-
-
 <div class="container">
-    <h1>permissions</h1>
-<form [formGroup]="reactiveform">
+  <h1>permissions</h1>
+  <form [formGroup]="form" (submit)="submit(form.value)">
     <div>
-        <label>UserName<input  type=" text" formControlName="userName" value="userName" /></label>
-      </div>
-      <div *ngFor="let item of RecivedPermission">
-        <hr>
-          <div><p>{{item.pageDescEn}}:</p></div>
-      <span >
-        <label>read_write<input type="radio" formControlName="radio" value="read_write" /></label>
-        <label>readOnly<input type="radio" formControlName="radio" value="readOnly" /></label>
-        <label >none<input  type="radio" formControlName="radio" value="none" />
-        <div *ngFor="let xx of item.pageFunctions ">
-           <label>{{xx.pageFuncDescEn}} <input type="checkbox" formControlName="checkbox" value="checkbox"></label> 
-           
-        </div>
-    </label>
-      </span>
-    </div>
+      <fieldset>
+        <legend>Personal Data:</legend>
+    
+        <label for="first-name">First Name:</label>
+        <input type="text" id="first-name" name="first-name" placeholder="(required)" formControlName="firstName">
+        <br><br>
+    
+        <label for="last-name">Last Name:</label>
+        <input type="text" id="last-name" name="last-name" placeholder="(optional)" formControlName="lastName">
+        <br><br>
+        <ng-container formArrayName="contacts" *ngFor="let contact of contacts.controls; index as i">
+          <ng-container [formGroupName]="i">
+            <label for="phone">PhoneNo:</label>
+            <input type="tel" id="phone" name="phone" placeholder="XXX-XX-XXX" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" formControlName="number">
       
-</form>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="address@domain.com" formControlName="email">
+      
+            <br><br>
+          </ng-container>
+        </ng-container>
+        <!-- <button class="btn-add" type="button" (click)="addContactField()">Add</button> -->
+      </fieldset>
+      
+      <button class="btn-submit" type="submit">Submit</button>
+      
+    </div>
+    </form>
+
+
+  <!-- <form [formGroup]="reactiveform">
+    <div>
+      <label>UserName<input type=" text" formControlName="userName" value="userName" /></label>
+    </div>
+    <div *ngFor="let item of ReceivedPermission">
+      <hr>
+      <div *ngFor="let group of dataFormGroups">
+        <span>
+          <div [formGroup]="group">
+            <div>
+              <p>{{item.pageDescEn}}:</p>
+            </div >
+            <div formControlName="radio">
+            <mat-radio-group aria-label="Select an option">
+              <mat-radio-button value="read_write">read_write</mat-radio-button>
+              <mat-radio-button value="readOnly">readOnly</mat-radio-button>
+              <mat-radio-button value="none">none</mat-radio-button>
+            </mat-radio-group>
+            
+          </div> -->
+
+            <!-- <label>read_write</label>
+            <input type="radio" formControlName="radio" value="read_write"
+                (click)="seba('read_write')" />
+            <label>readOnly</label>
+            <input id="{{item.id}}" #local type="radio" formControlName="radio" value="readOnly"
+                (click)="seba($event)" />
+            <label>none</label> -->
+            <!-- <div *ngFor="let xx of item.pageFunctions ">
+              <div >
+                <label>{{xx.pageFuncDescEn}} <input type="checkbox" formControlName="checkbox" value="checkbox"></label>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </span>
+      </div>
+
+    </div>
+    <div><button type="submit">submit</button></div>
+
+  </form> -->
 </div>
 
 <li><a routerLink="/">back</a></li>
