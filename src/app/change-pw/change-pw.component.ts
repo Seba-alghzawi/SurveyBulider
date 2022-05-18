@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EmailValidator, FormBuilder ,FormGroup, RequiredValidator } from '@angular/forms'; 
 import { Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-change-pw',
   templateUrl: './change-pw.component.html',
@@ -23,7 +24,7 @@ registerArray:any={};
 
   constructor(private route:ActivatedRoute ,private fb:FormBuilder) {
     
-   
+  
    }
 
   ngOnInit(): void {
@@ -32,7 +33,8 @@ registerArray:any={};
        radio:[''],
        email:[''],
        phone:['']
-     })
+     }
+     )
      this.reactiveForm.get('radio')?.valueChanges.subscribe(value=>{
       this.valueSelected = value;
      })
@@ -52,6 +54,7 @@ registerArray:any={};
       this.reactiveForm.get('email')?.clearValidators();
       this.reactiveForm.get('phone')?.setValidators(Validators.required);
     }
+
 
   }
 
